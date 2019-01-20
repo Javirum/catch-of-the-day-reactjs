@@ -18,6 +18,7 @@ class EditFishForm extends React.Component {
       </select>
       <textarea type="text" name="desc" onChange={this.handleChange} value={this.props.fish.desc} />
       <input type="text" name="img" onChange={this.handleChange} value={this.props.fish.img} />
+      <button onClick={() => this.props.deleteFish(this.props.index)}>Remove Fish</button>
     </div>
   }
 }
