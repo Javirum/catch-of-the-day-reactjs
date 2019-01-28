@@ -79,11 +79,27 @@ class App extends React.Component {
         <div className='menu'>
           <Header tagline='Fresh Seafood Market' />
           <ul className="fishes">
-            {Object.keys(this.state.fishes).map(key => <Fish key={key} index={key} details={this.state.fishes[key]} addToOrder={this.addToOrder} />)}
+            {Object.keys(this.state.fishes).map(key =>
+              <Fish
+                key={key} index={key}
+                details={this.state.fishes[key]}
+                addToOrder={this.addToOrder}
+              />)}
           </ul>
         </div>
-        <Order fish={this.state.fishes} order={this.state.order} deleteOrder={this.deleteOrder} />
-        <Inventory addFish={this.addFish} updateFish={this.updateFish} deleteFish={this.deleteFish} loadSampleFishes={this.loadSampleFishes} fishes={this.state.fishes} />
+        <Order
+          fish={this.state.fishes}
+          order={this.state.order}
+          deleteOrder={this.deleteOrder} />
+
+        <Inventory
+          addFish={this.addFish}
+          updateFish={this.updateFish}
+          deleteFish={this.deleteFish}
+          loadSampleFishes={this.loadSampleFishes}
+          fishes={this.state.fishes}
+          storeId={this.props.match.params.storeId}
+        />
       </div>
     )
   }
