@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import AddFishForm from './AddFishForm'
 import EditFishForm from './EditFishForm'
-import Login from './Login'
-import firebase from 'firebase'
+// import Login from './Login'
+import firebase from 'firebase/app'
 import base, { firebaseApp } from '../base'
 
 
@@ -47,7 +47,7 @@ class Inventory extends React.Component {
     const authProvider = new firebase.auth[`${provider}AuthProvider`]()
     firebaseApp
       .auth()
-      .signInWithPopup(authProvider)
+      .signInWithRedirect(authProvider)
       .then(this.authHandler)
   }
 
@@ -58,19 +58,18 @@ class Inventory extends React.Component {
   }
 
   render() {
-    const logout = <button onClick={this.logout}>Log out!</button>
-    if (!this.state.uid) {
-      return <Login authenticate={this.authenticate} />
-    }
+    // const logout = <button onClick={this.logout}>Log out!</button>
+    // if (!this.state.uid) {
+    //   return <Login authenticate={this.authenticate} />
+    // }
 
-    if (this.state.uid !== this.state.owner) {
-      return <div> Sorry you are not the owner of this store!</div>
-      { logout }
-    }
+    // if (this.state.uid !== this.state.owner) {
+    //   return <div> Sorry you are not the owner of this store! {logout}</div>
+    // }
     return (
       <div className='inventory'>
         <h2>Inventory</h2>
-        {logout}
+        {/* {logout} */}
         {Object.keys(this.props.fishes).map(key => <EditFishForm key={key} index={key} fish={this.props.fishes[key]} updateFish={this.props.updateFish} deleteFish={this.props.deleteFish} />)}
         <AddFishForm addFish={this.props.addFish} />
         <button onClick={this.props.loadSampleFishes}>Add Sample Fish</button>
