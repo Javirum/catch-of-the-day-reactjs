@@ -16,11 +16,11 @@ class Fish extends React.Component {
   }
 
   render() {
-    const { name, img, desc, price, status } = this.props.details
+    const { name, image, desc, price, status } = this.props.details
     const isAvailable = status === 'available'
     return (
       <li className='menu-fish'>
-        <img src={img} alt={name} />
+        <img src={image} alt={name} />
         <span className="fish-name">{name}</span>
         <h3 className="price">{formatPrice(price)}</h3>
         <p>{desc}</p>
