@@ -13,7 +13,7 @@ const Login = (props) => (
 )
 
 Login.propTypes = {
-  authenticate: PropTypes.func.IsRequired
+  authenticate: PropTypes.func
 }
 
 export default Login;
